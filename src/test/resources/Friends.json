@@ -1,0 +1,16 @@
+{
+  "firstname": "Smita",
+  "lastname": "Shewale",
+  "address": [
+    {
+      "streetName": "satara road",
+      "houseNo": "2111"
+    },
+    {
+      "streetName": "paudh road",
+      "houseNo": "4121"
+    }
+  ],
+  "id": "smita",
+  "age": 25
+}
