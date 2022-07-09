@@ -33,30 +33,36 @@ public class Day4Test {
     @Test
     public void verifyFriendsJSONObject() {
         JSONObject friend = new JSONObject();
-        friend.put("firstname", "Shubham");
-        friend.put("lastname", "Butoliya");
-        friend.put("id", 70433);
+        friend.put("firstname", "Sarang");
+        friend.put("lastname", "Tamhaney");
+        friend.put("id", "sarang");
         friend.put("age", 27);
 
-        given().contentType(JSON).body(friend.toString()).spec(postRequestSpecification)
-                .when().post()
+        given().pathParam("id", "sarang")
+                .when().delete("http://localhost:3000/friends/{id}");
+
+        given().contentType(JSON).spec(postRequestSpecification).body(friend.toString())
+                .when().log().all().post()
                 .then().assertThat().statusCode(201);
 
-        given().pathParam("id", 70433).spec(getRequestSpecification)
-                .when().get("/{id}")
-                .then().spec(getResponseSpecification).assertThat().body("lastname", equalTo("Butoliya"));
+        given().pathParam("id", "sarang").spec(getRequestSpecification)
+                .when().log().all().get("/{id}")
+                .then().spec(getResponseSpecification).assertThat().body("lastname", equalTo("Tamhaney"));
     }
 
     @Test
     public void verifyAddDataJSONFile() {
-        File file = new File("./src/test/resources/Friends.json");
+        File file = new File("./src/test/resources/add_friend.json");
 
-        given().contentType(JSON).body(file).spec(postRequestSpecification)
+        given().pathParam("id", "friend1")
+                .when().delete("http://localhost:3000/friends/{id}");
+
+        given().contentType(JSON).spec(postRequestSpecification).body(file)
                 .when().post()
                 .then().assertThat().statusCode(201);
 
-        given().pathParam("id", "smita").spec(getRequestSpecification)
+        given().pathParam("id", "friend1").spec(getRequestSpecification)
                 .when().get("/{id}")
-                .then().spec(getResponseSpecification).assertThat().body("lastname", equalTo("Shewale"));
+                .then().spec(getResponseSpecification).assertThat().body("lastname", equalTo("Friend1"));
     }
 }

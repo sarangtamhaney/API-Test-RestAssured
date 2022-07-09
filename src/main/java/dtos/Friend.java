@@ -14,4 +14,11 @@ public class Friend {
     private String age;
     private List<Address> Address;
 
+    public String getId(){
+        return this.id;
+    }
+
+    public void setId(String id){
+        this.id = id;
+    }
 }

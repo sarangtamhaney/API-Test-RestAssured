@@ -29,30 +29,36 @@ public class Day3Test {
     @Test
     public void verifyFriendsJSONObject() {
         JSONObject friend = new JSONObject();
-        friend.put("firstname", "Shubham");
-        friend.put("lastname", "Butoliya");
-        friend.put("id", 70433);
-        friend.put("age", 27);
+        friend.put("firstname", "Sarang");
+        friend.put("lastname", "Tamhaney");
+        friend.put("id", "sarang");
+        friend.put("age", 28);
+
+        given().pathParam("id", "sarang")
+                .when().delete("http://localhost:3000/friends/{id}");
 
         given().contentType(JSON).body(friend.toString())
                 .when().post("http://localhost:3000/friends")
                 .then().assertThat().statusCode(201);
 
-        given().pathParam("id", 70433)
+        given().pathParam("id", "sarang")
                 .when().get("http://localhost:3000/friends/{id}")
-                .then().assertThat().statusCode(200).body("lastname", equalTo("Butoliya"));
+                .then().assertThat().statusCode(200).body("lastname", equalTo("Tamhaney"));
     }
 
     @Test
     public void verifyAddDataJSONFile() {
-        File file = new File("./src/test/resources/Friends.json");
+        File file = new File("./src/test/resources/add_friend.json");
+
+        given().pathParam("id", "friend1")
+                .when().delete("http://localhost:3000/friends/{id}");
 
         given().contentType(JSON).body(file)
                 .when().post("http://localhost:3000/friends")
                 .then().assertThat().statusCode(201);
 
-        given().pathParam("id", "smita")
+        given().pathParam("id", "friend1")
                 .when().get("http://localhost:3000/friends/{id}")
-                .then().assertThat().statusCode(200).body("lastname", equalTo("Shewale"));
+                .then().assertThat().statusCode(200).body("lastname", equalTo("Friend1"));
     }
 }

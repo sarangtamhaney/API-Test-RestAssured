@@ -34,6 +34,7 @@ public class Day5Test {
     public void verifyGetFriends() {
         List<Friend> friends = asList(given().spec(getRequestSpecification).log().all()
                 .when().get().as(Friend[].class));
+//        System.out.println(friends);
     }
 
     @Test
@@ -42,13 +43,13 @@ public class Day5Test {
                 .when().get().as(Friend[].class));
 
         Friend friend = new Friend();
-        friend.setFirstname("Sagar");
-        friend.setLastname("Butoliya");
-        friend.setAge("32");
+        friend.setFirstname("duplicate");
+        friend.setLastname("friend");
+        friend.setAge("20");
 
         friend.setId(friends.get(0).getId());
 
-        given().contentType(JSON).body(friend).spec(postRequestSpecification)
+        given().contentType(JSON).spec(postRequestSpecification).body(friend)
                 .when().post()
                 .then().assertThat().statusCode(500);
     }

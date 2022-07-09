@@ -1,0 +1,121 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "array",
+  "items": [
+    {
+      "type": "object",
+      "properties": {
+        "firstname": {
+          "type": "string"
+        },
+        "lastname": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "age": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "firstname",
+        "lastname",
+        "id",
+        "age"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "firstname": {
+          "type": "string"
+        },
+        "lastname": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "age": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "firstname",
+        "lastname",
+        "id",
+        "age"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "firstname": {
+          "type": "string"
+        },
+        "lastname": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "age": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "firstname",
+        "lastname",
+        "id",
+        "age"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "firstname": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "age": {
+          "type": "integer"
+        },
+        "lastname": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "firstname",
+        "id",
+        "age",
+        "lastname"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "firstname": {
+          "type": "string"
+        },
+        "lastname": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "age": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "firstname",
+        "lastname",
+        "id",
+        "age"
+      ]
+    }
+  ]
+}
